@@ -1,17 +1,18 @@
 #include "ArgumentManager.h"
 #include <iostream>
-#include "Matrix.h"
+#include "Matrix.cpp"
 #include <fstream>
 #include <sstream>
 #include <string>
 
 using namespace std;
 
-int main(int argc, char* argv[]) {
-	ArgumentManager am(argc, argv);
+int main()
+{ // int argc, char* argv[]) {
+	// ArgumentManager am(argc, argv);
 	ifstream in("input1.txt");
 	ofstream out("output.txt");
-	
+
 	char operations;
 	int numRow, numCol;
 	int row, col, value;
@@ -25,11 +26,13 @@ int main(int argc, char* argv[]) {
 
 	Matrix m1(numRow, numCol);
 
-	while (getline(in, line)) {
-		if (line.length() == 0) {
+	while (getline(in, line))
+	{
+		if (line.length() == 0)
+		{
 			break;
 		}
-		//cout << line << endl;
+		// cout << line << endl;
 		stringstream ss(line);
 		ss >> row >> col >> value;
 		cout << row << " " << col << " " << value << endl;
@@ -43,34 +46,42 @@ int main(int argc, char* argv[]) {
 
 	Matrix m2(numRow, numCol);
 
-	while (getline(in, line)) {
-		if (line.length() == 0) {
+	while (getline(in, line))
+	{
+		if (line.length() == 0)
+		{
 			break;
 		}
-		//cout << line << endl;
+		// cout << line << endl;
 		stringstream ss(line);
 		ss >> row >> col >> value;
 		cout << row << " " << col << " " << value << endl;
 		m2.Insert(row, col, value);
 	}
 
-	cout << endl << endl;
+	cout << endl
+		 << endl
+		 << "First matrix:" << endl;
 	m1.Print();
-	cout << endl << endl;
+	cout << endl
+		 << endl
+		 << "Second Matrix:" << endl;
 	m2.Print();
-	cout << endl << endl;
+	cout << endl
+		 << endl;
 	Matrix m3 = m1 + m2;
 	cout << "Addition:\n";
 	m3.Print();
-	cout << endl << endl;
+	cout << endl
+		 << endl;
 	Matrix m4 = m1 * m2;
 	cout << "Multiplication:\n";
 	m4.Print();
-	cout << endl << endl;
+	cout << endl
+		 << endl;
 	Matrix m5 = m3.transpose();
 	cout << "Transpose:\n";
 	m5.Print();
-
 
 	return 0;
 }
