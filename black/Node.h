@@ -8,7 +8,7 @@ class Node
 protected:
     int row;
     int col;
-    int value;
+    int data;
 
 public:
 };
@@ -20,6 +20,8 @@ private:
     Node *down;
 
 public:
+    HeaderNode();
+    int getRight();
 };
 
 class InternalNode : public Node
