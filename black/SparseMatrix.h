@@ -1,9 +1,13 @@
 #pragma once
+#include "Node.h"
+
+
+
 class SparseMatrix
 {
 private:
-	int zero = 0;
-	int value = 1;
+	HeaderNode head;
+	int values;
 
 public:
 	SparseMatrix(/* args */);
