@@ -6,43 +6,35 @@ using namespace std;
 class Node
 {
 public:
-    virtual ~Node() {}
+    //virtual ~Node() {}
+    int data;
+    Node(int _data) {
+        data = data;
+    }
 };
 
 class HeaderNode : public Node
 {
 public:
-    int data;
+    //int data;
     Node *right;
     Node *down;
-
-<<<<<<< HEAD
-public:
-    HeaderNode() {
-        right = NULL;
-        down = NULL;
-    }
-    //void setRightNode(Node* right) {
-    //    //col = right;
-    //}
-    Node* getRightNode() {
+    /*Node* getRightNode() {
         return right;
     }
-=======
-    HeaderNode(int num)
-    {
-        value = num;
+    Node* getDownNode() {
+        return down;
+    }*/
+    HeaderNode(int num) : Node(data) {
         right = nullptr;
         down = nullptr;
     }
-    // int getRight();
->>>>>>> a1bbcc63f09ce5f9968e1c582925abbf59f10697
 };
 
 class InternalNode : public Node
 {
 public:
-    int value;
+    //int value;
     int row;
     int col;
     Node *left;
@@ -52,7 +44,7 @@ public:
 
     InternalNode(int val, int r, int c)
     {
-        value = val;
+        data = val;
         row = r;
         col = c;
         left = nullptr;
