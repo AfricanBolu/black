@@ -20,8 +20,16 @@ private:
     Node *down;
 
 public:
-    HeaderNode();
-    int getRight();
+    HeaderNode() {
+        right = NULL;
+        down = NULL;
+    }
+    //void setRightNode(Node* right) {
+    //    //col = right;
+    //}
+    Node* getRightNode() {
+        return right;
+    }
 };
 
 class InternalNode : public Node

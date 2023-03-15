@@ -22,17 +22,15 @@ SparseMatrix::SparseMatrix(/* args */)
 
 SparseMatrix::~SparseMatrix()
 {
-	HeaderNode* currRow = head;
-	while (currRow != NULL) {
-		HeaderNode* temp = currRow;
-		currRow = currRow.getRight();
-
-	}
-
+	
 }
 
 void SparseMatrix::Frame(/* args */) {
-
+	HeaderNode* currRight = head;
+	while (currRight != nullptr) {
+		HeaderNode* temp = currRight;
+		currRight = currRight->getRightNode();
+	}
 }
 
 void SparseMatrix::InterMatrix(/* args */) {
