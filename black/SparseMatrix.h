@@ -16,8 +16,6 @@ public:
 	SparseMatrix(int rows, int cols);
 	~SparseMatrix();
 	void Frame();
-	void PrintFrame(HeaderNode* head, HeaderNode* tail);
+	void PrintFrame();
 	void InterMatrix(/* args */);
 };
-
-

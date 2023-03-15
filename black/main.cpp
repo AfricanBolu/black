@@ -1,10 +1,10 @@
-#include "ArgumentManager.h"
+// #include "ArgumentManager.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include "Matrix.cpp"
-#include "SparseMatrix.h"
+#include "SparseMatrix.cpp"
 
 using namespace std;
 
@@ -69,5 +69,11 @@ int main()
          << "Second Matrix:" << endl;
     m2.Print();
 
-        return 0;
+    SparseMatrix sparse(numRow, numCol);
+    sparse.Frame();
+    cout << endl
+         << "Frame of sparse matrix:" << endl;
+    sparse.PrintFrame();
+
+    return 0;
 }

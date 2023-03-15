@@ -17,7 +17,7 @@ SparseMatrix::SparseMatrix(int rows, int cols)
 	numCols = cols;
 
 	// this makes the first node of -1
-	HeaderNode* node = new HeaderNode();
+	HeaderNode *node = new HeaderNode();
 	node->data = -1;
 	node->right = nullptr;
 	node->down = nullptr;
@@ -26,24 +26,23 @@ SparseMatrix::SparseMatrix(int rows, int cols)
 	rowTail = node;
 }
 
-// just so that main works
-//  SparseMatrix::~SparseMatrix()
-//  {
-//  	Node *currNode = head;
-//  	while (currNode != nullptr)
-//  	{
-//  		Node *temp = currNode;
-//  		currNode = currNode->;
-//  		delete temp;
-//  	}
-//  }
+SparseMatrix::~SparseMatrix()
+{
+	// Node *currNode = head;
+	// while (currNode != nullptr)
+	// {
+	// 	Node *temp = currNode;
+	// 	currNode = currNode->;
+	// 	delete temp;
+	// }
+}
 
 void SparseMatrix::Frame()
 {
 	// for loop to make col nodes to the right
 	for (int i = 0; i < numCols; i++)
 	{
-		HeaderNode* node = new HeaderNode();
+		HeaderNode *node = new HeaderNode();
 		node->data = i;
 		node->right = nullptr;
 		node->down = nullptr;
@@ -54,7 +53,7 @@ void SparseMatrix::Frame()
 	// for loop to make row nodes going down
 	for (int i = 0; i < numRows; i++)
 	{
-		HeaderNode* node = new HeaderNode();
+		HeaderNode *node = new HeaderNode();
 		node->data = i;
 		node->right = nullptr;
 		node->down = nullptr;
@@ -63,10 +62,11 @@ void SparseMatrix::Frame()
 	}
 }
 
-void SparseMatrix::PrintFrame(HeaderNode* head, HeaderNode* tail)
+void SparseMatrix::PrintFrame()
 {
 	// this prints out the nodes to the right aka the col nodes
-	HeaderNode* traverser = head;
+	HeaderNode *traverser = head;
+	cout << "column nodes:" << endl;
 	while (traverser != nullptr)
 	{
 		cout << traverser->data << endl;
@@ -74,7 +74,8 @@ void SparseMatrix::PrintFrame(HeaderNode* head, HeaderNode* tail)
 	}
 
 	// this prints out the nodes going down aka the row nodes
-	traverser = tail;
+	cout << "row nodes:" << endl;
+	traverser = head;
 	while (traverser != nullptr)
 	{
 		cout << traverser->data << endl;
