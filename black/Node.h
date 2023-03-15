@@ -6,12 +6,11 @@ using namespace std;
 class Node
 {
 public:
-    //virtual ~Node() {}
     int data;
-    Node() {
+    Node()
+    {
         data = 0;
     }
-    
 };
 
 class HeaderNode : public Node
@@ -38,7 +37,7 @@ public:
 class InternalNode : public Node
 {
 public:
-    //int value;
+    // int value;
     int row;
     int col;
     Node *left;
@@ -46,7 +45,7 @@ public:
     Node *up;
     Node *down;
 
-    InternalNode(int val, int r, int c)
+    InternalNode(int r, int c, int val)
     {
         data = val;
         row = r;
