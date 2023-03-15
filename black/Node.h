@@ -8,6 +8,7 @@ class Node
 public:
     //virtual ~Node() {}
     int data;
+    Node();
     Node(int _data) {
         data = data;
     }
@@ -16,11 +17,8 @@ public:
 class HeaderNode : public Node
 {
 public:
-    //int data;
     Node *right;
     Node *down;
-
-public:
     HeaderNode()
     {
         right = nullptr;
@@ -29,20 +27,11 @@ public:
     // void setRightNode(Node* right) {
     // col = right;
     // }
-    Node *getRightNode()
+    HeaderNode(int num) : Node(data)
     {
-    /*Node* getRightNode() {
-        return right;
-    }
-=======
-    HeaderNode(int num)
-    {
-        value = num;
         right = nullptr;
         down = nullptr;
     }
-    // int getRight();
->>>>>>> a1bbcc63f09ce5f9968e1c582925abbf59f10697
 };
 
 class InternalNode : public Node
