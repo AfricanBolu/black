@@ -16,27 +16,26 @@ public:
     Node *right;
     Node *down;
 
-<<<<<<< HEAD
 public:
-    HeaderNode() {
-        right = NULL;
-        down = NULL;
+    HeaderNode()
+    {
+        right = nullptr;
+        down = nullptr;
     }
-    //void setRightNode(Node* right) {
-    //    //col = right;
-    //}
-    Node* getRightNode() {
+    // void setRightNode(Node* right) {
+    // col = right;
+    // }
+    Node *getRightNode()
+    {
         return right;
     }
-=======
     HeaderNode(int num)
     {
-        value = num;
+        data = num;
         right = nullptr;
         down = nullptr;
     }
     // int getRight();
->>>>>>> a1bbcc63f09ce5f9968e1c582925abbf59f10697
 };
 
 class InternalNode : public Node
