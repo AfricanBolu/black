@@ -83,6 +83,6 @@ void SparseMatrix::PrintFrame()
 	}
 }
 
-void SparseMatrix::InterMatrix(/* args */)
+void SparseMatrix::InterMatrix(int row, int col, int val)
 {
 }
