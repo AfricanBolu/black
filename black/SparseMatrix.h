@@ -6,8 +6,11 @@ class SparseMatrix
 private:
 	Node *head;
 	Node *tail;
+	// does this class really need an int value? the values should all be stored in the nodes right?
 	int value;
 	int size;
+	int numRows;
+	int numCols;
 
 public:
 	SparseMatrix();
