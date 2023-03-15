@@ -5,32 +5,45 @@ using namespace std;
 
 class Node
 {
-protected:
-    int row;
-    int col;
-    int data;
-
 public:
+    virtual ~Node() {}
 };
 
 class HeaderNode : public Node
 {
-private:
+public:
+    int value;
     Node *right;
     Node *down;
 
-public:
-    HeaderNode();
-    int getRight();
+    HeaderNode(int num)
+    {
+        value = num;
+        right = nullptr;
+        down = nullptr;
+    }
+    // int getRight();
 };
 
 class InternalNode : public Node
 {
-private:
+public:
+    int value;
+    int row;
+    int col;
     Node *left;
     Node *right;
     Node *up;
     Node *down;
 
-public:
+    InternalNode(int val, int r, int c)
+    {
+        value = val;
+        row = r;
+        col = c;
+        left = nullptr;
+        right = nullptr;
+        up = nullptr;
+        down = nullptr;
+    }
 };
