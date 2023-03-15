@@ -1,42 +1,43 @@
 #pragma once
 #include "Node.h"
 
-
-
 class SparseMatrix
 {
 private:
-	HeaderNode* head;
+	Node *head;
+	Node *tail;
 	int value;
 	int size;
+
 public:
-	SparseMatrix(/* args */);
+	SparseMatrix();
 	~SparseMatrix();
-	void Frame(/* args */);
+	void Frame(int numRows, int numCols);
 	void InterMatrix(/* args */);
 };
 
-SparseMatrix::SparseMatrix(/* args */)
+SparseMatrix::SparseMatrix()
 {
+	head = nullptr;
+	tail = nullptr;
 }
 
 SparseMatrix::~SparseMatrix()
 {
-	HeaderNode* currRow = head;
-	while (currRow != NULL) {
-		HeaderNode* temp = currRow;
-		currRow = currRow.getRight();
-
-	}
-
+	// worry about this shit later i just wanna get the frame working
+	//  Node *currNode = head;
+	//  while (currNode != nullptr)
+	//  {
+	//  	Node *temp = currNode;
+	//  	currNode = currNode->;
+	//  	delete temp;
+	//  }
 }
 
-void SparseMatrix::Frame(/* args */) {
-
+void SparseMatrix::Frame(int numRows, int numCols)
+{
 }
 
-void SparseMatrix::InterMatrix(/* args */) {
-
+void SparseMatrix::InterMatrix(/* args */)
+{
 }
-// test test this is gabe
-// yeah it working
