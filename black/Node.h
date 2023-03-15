@@ -8,10 +8,10 @@ class Node
 public:
     //virtual ~Node() {}
     int data;
-    Node();
-    Node(int _data) {
-        data = data;
+    Node() {
+        data = 0;
     }
+    
 };
 
 class HeaderNode : public Node
@@ -27,8 +27,9 @@ public:
     // void setRightNode(Node* right) {
     // col = right;
     // }
-    HeaderNode(int num) : Node(data)
+    HeaderNode(int num) : Node()
     {
+        data = num;
         right = nullptr;
         down = nullptr;
     }
