@@ -24,14 +24,13 @@ SparseMatrix::SparseMatrix()
 
 SparseMatrix::~SparseMatrix()
 {
-	// worry about this shit later i just wanna get the frame working
-	//  Node *currNode = head;
-	//  while (currNode != nullptr)
-	//  {
-	//  	Node *temp = currNode;
-	//  	currNode = currNode->;
-	//  	delete temp;
-	//  }
+	Node *currNode = head;
+	while (currNode != nullptr)
+	{
+		Node *temp = currNode;
+		currNode = currNode->;
+		delete temp;
+	}
 }
 
 void SparseMatrix::Frame(int numRows, int numCols)
