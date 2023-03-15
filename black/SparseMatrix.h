@@ -1,40 +1,21 @@
 #pragma once
 #include "Node.h"
 
-
-
 class SparseMatrix
 {
 private:
-	HeaderNode* head;
+	Node *head;
+	Node *tail;
+	// does this class really need an int value? the values should all be stored in the nodes right?
+	//i think it does so we can tell it what the current value is to save the location i think
 	int value;
 	int size;
+	int numRows;
+	int numCols;
+
 public:
-	SparseMatrix(/* args */);
+	SparseMatrix();
 	~SparseMatrix();
-	void Frame(/* args */);
+	void Frame(int , int);
 	void InterMatrix(/* args */);
 };
-
-SparseMatrix::SparseMatrix(/* args */)
-{
-}
-
-SparseMatrix::~SparseMatrix()
-{
-	
-}
-
-void SparseMatrix::Frame(/* args */) {
-	HeaderNode* currRight = head;
-	while (currRight != nullptr) {
-		HeaderNode* temp = currRight;
-		currRight = currRight->getRightNode();
-	}
-}
-
-void SparseMatrix::InterMatrix(/* args */) {
-
-}
-// test test this is gabe
-// yeah it working
