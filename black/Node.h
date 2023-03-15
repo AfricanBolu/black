@@ -17,8 +17,8 @@ public:
 class HeaderNode : public Node
 {
 public:
-    Node *right;
-    Node *down;
+    HeaderNode *right;
+    HeaderNode *down;
     HeaderNode()
     {
         right = nullptr;
@@ -29,7 +29,7 @@ public:
     // }
     HeaderNode(int num) : Node()
     {
-        data = num;
+        num = data;
         right = nullptr;
         down = nullptr;
     }

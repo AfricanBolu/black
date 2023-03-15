@@ -1,6 +1,7 @@
 #include "ArgumentManager.h"
 #include <iostream>
-#include "Matrix.cpp"
+#include "Matrix.h"
+#include "SparseMatrix.h"
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -25,6 +26,7 @@ int main()
 	in.ignore();
 
 	Matrix m1(numRow, numCol);
+	//SparseMatrix t1(numRow, numCol);
 
 	while (getline(in, line))
 	{

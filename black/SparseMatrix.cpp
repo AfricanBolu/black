@@ -1,4 +1,5 @@
 #include "SparseMatrix.h"
+#include "Node.h"
 
 SparseMatrix::SparseMatrix()
 {
@@ -62,7 +63,7 @@ void SparseMatrix::Frame()
 	}
 }
 
-void SparseMatrix::PrintFrame()
+void SparseMatrix::PrintFrame(HeaderNode* head, HeaderNode* tail)
 {
 	// this prints out the nodes to the right aka the col nodes
 	HeaderNode* traverser = head;
@@ -73,7 +74,7 @@ void SparseMatrix::PrintFrame()
 	}
 
 	// this prints out the nodes going down aka the row nodes
-	Node* traverser = head;
+	traverser = tail;
 	while (traverser != nullptr)
 	{
 		cout << traverser->data << endl;
