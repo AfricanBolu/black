@@ -1,6 +1,7 @@
 #include "ArgumentManager.h"
+#include "SparseMatrix.h"
+#include "Matrix.h"
 #include <iostream>
-#include "Matrix.cpp"
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -25,7 +26,8 @@ int main()
 	in.ignore();
 
 	Matrix m1(numRow, numCol);
-	// SparseMatrix t1(numRow, numCol);
+	SparseMatrix t1(numRow, numCol);
+	t1.PrintFrame();
 
 	while (getline(in, line))
 	{
@@ -86,3 +88,4 @@ int main()
 
 	return 0;
 }
+
