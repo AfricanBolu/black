@@ -4,7 +4,8 @@
 class SparseMatrix
 {
 private:
-	InternalNode* InterHead;
+	HeaderNode *head;
+	InternalNode *InterHead;
 	/*InternalNode* cols;
 	InternalNode* rows;*/
 	HeaderNode *FrameHead;

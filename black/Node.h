@@ -45,7 +45,7 @@ public:
     Node *up;
     Node *down;
 
-    InternalNode(int r, int c, int val)
+        InternalNode(int r, int c, int val)
     {
         data = val;
         row = r;

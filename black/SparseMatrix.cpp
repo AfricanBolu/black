@@ -3,32 +3,27 @@
 
 SparseMatrix::SparseMatrix()
 {
-	InterHead = nullptr;
-	FrameHead = nullptr;
+	head = nullptr;
 	colTail = nullptr;
 	rowTail = nullptr;
-	numRows = 0;
-	numCols = 0;
-	value = 0;
 }
 
 SparseMatrix::SparseMatrix(int rows, int cols)
 {
-	FrameHead = nullptr;
+	head = nullptr;
 	colTail = nullptr;
 	rowTail = nullptr;
 	numRows = rows;
 	numCols = cols;
-	
+
 	// this makes the first node of -1
 	HeaderNode *node = new HeaderNode();
 	node->data = -1;
 	node->right = nullptr;
 	node->down = nullptr;
-	FrameHead = node;
+	head = node;
 	colTail = node;
 	rowTail = node;
-	//value = node;
 }
 
 SparseMatrix::~SparseMatrix()
@@ -70,7 +65,7 @@ void SparseMatrix::Frame()
 void SparseMatrix::PrintFrame()
 {
 	// this prints out the nodes to the right aka the col nodes
-	HeaderNode *traverser = FrameHead;
+	HeaderNode *traverser = head;
 	cout << "column nodes:" << endl;
 	while (traverser != nullptr)
 	{
@@ -80,7 +75,7 @@ void SparseMatrix::PrintFrame()
 
 	// this prints out the nodes going down aka the row nodes
 	cout << "row nodes:" << endl;
-	traverser = FrameHead;
+	traverser = head;
 	while (traverser != nullptr)
 	{
 		cout << traverser->data << endl;
@@ -90,14 +85,6 @@ void SparseMatrix::PrintFrame()
 
 void SparseMatrix::InterMatrix(int row, int col, int val)
 {
-	InternalNode* temp = InterHead;
-	numRows = row;
-	numCols = col;
-	//temp->data = val;
-	//value = val;
-	temp->data = val;
-	temp->col = col;
-	temp->row = row;
-
-	//pushing
+	// this the hard part
+	InternalNode *newNode = new InternalNode(row, col, val);
 }
