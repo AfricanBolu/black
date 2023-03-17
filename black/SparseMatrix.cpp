@@ -99,5 +99,5 @@ void SparseMatrix::InterMatrix(int row, int col, int val)
 	temp->col = col;
 	temp->row = row;
 
-
+	//pushing
 }
