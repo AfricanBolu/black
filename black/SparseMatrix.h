@@ -4,7 +4,10 @@
 class SparseMatrix
 {
 private:
-	HeaderNode *head;
+	InternalNode* InterHead;
+	/*InternalNode* cols;
+	InternalNode* rows;*/
+	HeaderNode *FrameHead;
 	HeaderNode *colTail; // this tail is the end of the nodes going right
 	HeaderNode *rowTail; // this tail is the end of the nodes going down
 	int value;			 // ohh if this is meant to be the values of the internal nodes then maybe we should make it a 2d array
