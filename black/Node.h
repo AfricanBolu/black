@@ -40,12 +40,12 @@ public:
     // int value;
     int row;
     int col;
-    Node *left;
-    Node *right;
-    Node *up;
-    Node *down;
+    InternalNode *left;
+    InternalNode *right;
+    InternalNode *up;
+    InternalNode *down;
 
-        InternalNode(int r, int c, int val)
+    InternalNode(int r, int c, int val)
     {
         data = val;
         row = r;

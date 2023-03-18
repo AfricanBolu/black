@@ -21,5 +21,5 @@ public:
 	~SparseMatrix();
 	void Frame();
 	void PrintFrame();
-	void InterMatrix(int row, int col, int val);
+	void InsertInternNode(int row, int col, int val);
 };

@@ -74,6 +74,7 @@ int main()
     cout << endl
          << "Frame of sparse matrix:" << endl;
     sparse.PrintFrame();
+    sparse.InsertInternNode(2, 2, 2);
 
     return 0;
 }

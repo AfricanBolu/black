@@ -83,8 +83,25 @@ void SparseMatrix::PrintFrame()
 	}
 }
 
-void SparseMatrix::InterMatrix(int row, int col, int val)
+void SparseMatrix::InsertInternNode(int row, int col, int val)
 {
 	// this the hard part
 	InternalNode *newNode = new InternalNode(row, col, val);
+	HeaderNode *rowIndex = head;
+	HeaderNode *colIndex = head;
+
+	// move rowIndex and colIndex to where new internal node is to be inserted
+	for (int r = 0; r <= row; r++)
+	{
+		rowIndex = rowIndex->down;
+	}
+	for (int c = 0; c <= col; c++)
+	{
+		colIndex = colIndex->right;
+	}
+	// just a check
+	//  cout << rowIndex->data << " " << colIndex->data << endl;
+
+	// now insert the internal node at those indexes
+	rowIndex->right = newNode;
 }
