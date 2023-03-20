@@ -34,7 +34,7 @@ public:
     }
 };
 
-class InternalNode : public Node
+class InternalNode : public HeaderNode
 {
 public:
     // int value;
