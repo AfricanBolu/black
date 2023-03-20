@@ -4,7 +4,7 @@
 class SparseMatrix
 {
 private:
-	//HeaderNode *head;
+	// HeaderNode *head;
 	InternalNode *InterHead;
 	/*InternalNode* cols;
 	InternalNode* rows;*/
@@ -22,4 +22,5 @@ public:
 	void Frame();
 	void PrintFrame();
 	void InsertInternNode(int row, int col, int val);
+	void PrintInside();
 };

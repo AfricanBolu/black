@@ -104,4 +104,10 @@ void SparseMatrix::InsertInternNode(int row, int col, int val)
 
 	// now insert the internal node at those indexes
 	rowIndex->right = newNode;
+	colIndex->down = newNode;
+}
+
+void SparseMatrix::PrintInside()
+{
+	// TODO: print the inside nodes
 }
