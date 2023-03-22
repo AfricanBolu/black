@@ -5,7 +5,7 @@ class SparseMatrix
 {
 private:
 	// HeaderNode *head;
-	InternalNode *InterHead;
+	InternalNode *InternalHead;
 	/*InternalNode* cols;
 	InternalNode* rows;*/
 	HeaderNode *FrameHead;
@@ -20,6 +20,7 @@ public:
 	SparseMatrix(int rows, int cols);
 	~SparseMatrix();
 	void Frame();
+	void MakeInternal();
 	void PrintFrame();
 	void InsertInternNode(int row, int col, int val);
 	void PrintInside();

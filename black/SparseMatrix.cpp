@@ -60,12 +60,37 @@ void SparseMatrix::Frame()
 		rowTail->down = node;
 		rowTail = node;
 	}
+
+	// assign internHead to position (0,0) inside the matrix
+	InternalNode *internHead = new InternalNode(0, 0, 0);
+	HeaderNode *col = FrameHead;
+	HeaderNode *row = FrameHead;
+
+	col = col->right;
+	row = row->down;
+
+	col->down = internHead;
+	row->right = internHead;
+
+	InternalHead = internHead;
+
+	// just a check for internal head
+	// cout << InternalHead->data << endl
+	// 	 << "it fucking worked ayyayayayay" << endl;
+}
+
+void SparseMatrix::MakeInternal()
+{
+
+	for (int row = 0; row < numRows; row++)
+	{
+	}
 }
 
 void SparseMatrix::PrintFrame()
 {
 	// this prints out the nodes to the right aka the col nodes
-	HeaderNode *traverser = FrameHead;
+	HeaderNode *traverser = FrameHead->right;
 	cout << "column nodes:" << endl;
 	while (traverser != nullptr)
 	{
@@ -75,7 +100,7 @@ void SparseMatrix::PrintFrame()
 
 	// this prints out the nodes going down aka the row nodes
 	cout << "row nodes:" << endl;
-	traverser = FrameHead;
+	traverser = FrameHead->down;
 	while (traverser != nullptr)
 	{
 		cout << traverser->data << endl;
@@ -89,6 +114,13 @@ void SparseMatrix::InsertInternNode(int row, int col, int val)
 	InternalNode *newNode = new InternalNode(row, col, val);
 	HeaderNode *rowIndex = FrameHead;
 	HeaderNode *colIndex = FrameHead;
+
+	// if pos(0,0) then that's just the internal head
+	if (row == 0 && col == 0)
+	{
+		InternalHead = newNode;
+		return;
+	}
 
 	// move rowIndex and colIndex to where new internal node is to be inserted
 	for (int r = 0; r <= row; r++)
@@ -110,4 +142,11 @@ void SparseMatrix::InsertInternNode(int row, int col, int val)
 void SparseMatrix::PrintInside()
 {
 	// TODO: print the inside nodes
+	InternalNode *traverser = InternalHead;
+
+	// lets just print the first row first
+	while (traverser != nullptr)
+	{
+		traverser->PrintInfo();
+	}
 }
