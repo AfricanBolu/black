@@ -24,4 +24,6 @@ public:
 	void PrintFrame();
 	void InsertInternNode(int row, int col, int val);
 	void PrintInside();
+	InternalNode GetInternalNode(int row, int col);
+	// please work
 };
