@@ -76,49 +76,20 @@ void SparseMatrix::Frame()
 
 	// just a check for internal head
 	// cout << InternalHead->data << endl
-	// 	 << "it fucking worked ayyayayayay" << endl;
 }
 
 void SparseMatrix::MakeInternal()
 {
-
-	InternalNode *head = new InternalNode(-1, -1, -1); // Head node
-	InternalNode *prevRow = head;					   // Pointer to previous row
-	InternalNode *prevCol[numCols];					   // Array of pointers to previous column
-
-	// Initialize previous column pointers to head
-	for (int i = 0; i < numCols; i++)
-	{
-		prevCol[i] = head;
-	}
+	InternalNode *leftNode;
+	InternalNode *aboveNode;
 
 	// Create nodes for each element and link them
-	for (int i = 0; i < numRows; i++)
+	for (int r = 0; r < numRows; r++)
 	{
-		InternalNode *currRow = new InternalNode(i, -1, -1); // Pointer to current row
-		prevRow->down = currRow;
-		currRow->up = prevRow;
-		prevRow = currRow;
-
-		InternalNode *currCol = nullptr; // Pointer to current column
-
-		for (int j = 0; j < numCols; j++)
+		for (int c = 0; c < numCols; c++)
 		{
-			int val;
-			// Get value from user input or generate random value
-			cout << "Enter value for row " << i << ", column " << j << ": ";
-			cin >> val;
-			// val = rand() % 10 + 1; // Uncomment this line to generate random value
-
-			currCol = new InternalNode(-1, j, val); // Pointer to current column
-			prevCol[j]->right = currCol;
-			currCol->left = prevCol[j];
-			currCol->up = prevCol[j]->up->right;
-			// currCol->up->down = currCol;
-			// prevCol[j]->up->right = currCol;
-			// currCol->down = prevCol[j]->down->right;
-			// prevCol[j]->down->right = currCol;
-			// prevCol[j] = currCol;
+			InternalNode *newNode = new InternalNode(r, c, 14);
+			if (newNode)
 		}
 	}
 }
