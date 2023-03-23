@@ -78,12 +78,23 @@ void SparseMatrix::Frame()
 	// cout << InternalHead->data << endl
 }
 
+
 InternalNode SparseMatrix::GetInternalNode(int row, int col)
 {
 	if (row < 0 || row >= numRows || col < 0 || col >= numCols)
 		cout << "Error in GetInternalNode" << endl;
 
-	HeaderNode *node = FrameHead;
+	InternalNode *node = InternalHead;
+	
+	for (int i = 0; i < row; i++) {
+		node = node->down;
+	}
+	for (int j = 0; j < col; j++) {
+		node = node->right;
+	}
+	//dynamic_cast<framenode*>(header)
+	//InternalNode* temp = dynamic_cast<InternalNode*>(node);
+	return *node;
 }
 
 void SparseMatrix::MakeInternal()
@@ -105,10 +116,12 @@ void SparseMatrix::MakeInternal()
 			else if (newNode->row == 0)
 			{
 				// get the left node and insert/link
+				//newNode->left = newNode;
 			}
 			else if (newNode->col == 0)
 			{
 				// get the above node and insert/link
+
 			}
 			else
 			{
