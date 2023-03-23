@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class HeaderNode : public Node
+class HeaderNode
 {
 public:
     int data = 0;
@@ -17,7 +17,7 @@ public:
     // void setRightNode(Node* right) {
     // col = right;
     // }
-    HeaderNode(int num) : Node()
+    HeaderNode(int num)
     {
         num = data;
         right = nullptr;
