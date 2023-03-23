@@ -55,4 +55,9 @@ public:
         up = nullptr;
         down = nullptr;
     }
+
+    void PrintInfo()
+    {
+        cout << "row: " << row << " col: " << col << " data: " << data << endl;
+    }
 };

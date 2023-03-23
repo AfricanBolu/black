@@ -77,6 +77,7 @@ int main()
     // sparse.InsertInternNode(0, 1, 2);
     // sparse.InsertInternNode(0, 2, 4);
     // sparse.InsertInternNode(0, 3, 6);
+    sparse.MakeInternal();
 
     return 0;
 }
