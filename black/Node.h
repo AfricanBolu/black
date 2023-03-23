@@ -3,19 +3,10 @@
 
 using namespace std;
 
-class Node
-{
-public:
-    int data;
-    Node()
-    {
-        data = 0;
-    }
-};
-
 class HeaderNode : public Node
 {
 public:
+    int data = 0;
     HeaderNode *right;
     HeaderNode *down;
     HeaderNode()
