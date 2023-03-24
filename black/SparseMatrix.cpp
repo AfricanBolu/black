@@ -137,7 +137,7 @@ void SparseMatrix::MakeInternal()
 			else if (newNode->col == 0)
 			{
 				// get the above node and insert/link
-				InternalNode *aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
+				InternalNode *aboveNode = GetInternalNode(newNode->row - 1, newNode->col);
 				cout << "Above" << endl;
 				// aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
 				cout << "above node created" << endl;
