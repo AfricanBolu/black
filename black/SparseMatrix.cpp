@@ -108,6 +108,7 @@ void SparseMatrix::MakeInternal()
 	{
 		for (int c = 0; c < numCols; c++)
 		{
+			cout << "--------------------------------" << endl;
 			cout << "r: " << r << " c: " << c << endl
 				 << endl;
 			InternalNode *newNode = new InternalNode(r, c, 14);
@@ -148,18 +149,18 @@ void SparseMatrix::MakeInternal()
 			else
 			{
 				// get the above node and left node and insert/link
-				InternalNode *aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
-				InternalNode *leftNode = GetInternalNode(newNode->col - 1, newNode->row);
-				cout << "Above" << endl;
-				// aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
-				cout << "above node created" << endl;
-				aboveNode->right = newNode;
-				cout << "new node inserted";
-				newNode->left = aboveNode;
+				InternalNode *aboveNode = GetInternalNode(newNode->row - 1, newNode->col);
+				InternalNode *leftNode = GetInternalNode(newNode->row, newNode->col - 1);
+				cout << "Above and left" << endl;
+				cout << "above node and left node created" << endl;
+				aboveNode->down = newNode;
+				cout << "above node inserted" << endl;
+				newNode->up = aboveNode;
 				cout << "above node linked" << endl;
-				leftNode->down = newNode;
-				cout << "new node inserted";
-				newNode->up = leftNode;
+				leftNode->PrintInfo();
+				leftNode->right = newNode;
+				cout << "left node inserted";
+				newNode->left = leftNode;
 				cout << "left node linked" << endl;
 			}
 		}
