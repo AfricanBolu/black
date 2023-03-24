@@ -104,6 +104,7 @@ void SparseMatrix::MakeInternal()
 	// InternalNode *aboveNode;
 
 	// Create nodes for each element and link them
+	int count = 0;
 	for (int r = 0; r < numRows; r++)
 	{
 		for (int c = 0; c < numCols; c++)
@@ -111,7 +112,7 @@ void SparseMatrix::MakeInternal()
 			cout << "--------------------------------" << endl;
 			cout << "r: " << r << " c: " << c << endl
 				 << endl;
-			InternalNode *newNode = new InternalNode(r, c, 14);
+			InternalNode *newNode = new InternalNode(r, c, count);
 			newNode->PrintInfo();
 			cout << endl;
 			if (newNode->col == 0 && newNode->row == 0)
@@ -163,6 +164,7 @@ void SparseMatrix::MakeInternal()
 				newNode->left = leftNode;
 				cout << "left node linked" << endl;
 			}
+			count++;
 		}
 	}
 }
@@ -222,11 +224,18 @@ void SparseMatrix::InsertInternNode(int row, int col, int val)
 void SparseMatrix::PrintInside()
 {
 	// TODO: print the inside nodes
-	InternalNode *traverser = InternalHead;
+	InternalNode *traverser = new InternalNode(0, 0, 0);
 
 	// lets just print the first row first
-	while (traverser != nullptr)
+	for (int r = 0; r < numRows; r++)
 	{
-		traverser->PrintInfo();
+		cout << "row: " << r << endl;
+		traverser = GetInternalNode(r, 0);
+		while (traverser != nullptr)
+		{
+			cout << traverser->data << endl;
+			traverser = traverser->right;
+		}
+		cout << endl;
 	}
 }

@@ -77,5 +77,7 @@ int main()
 
     sparse.MakeInternal();
 
+    sparse.PrintInside();
+
     return 0;
 }
