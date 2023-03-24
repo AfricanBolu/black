@@ -132,7 +132,6 @@ void SparseMatrix::MakeInternal()
 				newNode->left = leftNode;
 				// cout << "left node linked" << endl;/
 				// leftNode->PrintInfo();
-				cout << endl;
 			}
 			else if (newNode->col == 0)
 			{

@@ -11,26 +11,23 @@ using namespace std;
 int main()
 { // int argc, char* argv[]) {
     // ArgumentManager am(argc, argv);
-    ifstream in("input1.txt");
+    ifstream fin("input1.txt");
     ofstream out("output.txt");
 
     char operations;
-    int numRow, numCol;
-    int row, col, value;
+    int numRow1, numCol1, row, col, value;
     string line;
 
-    in >> operations;
-    cout << operations << endl;
-    in >> numRow >> numCol;
-    cout << numRow << " " << numCol << endl;
-    in.ignore();
+    fin >> operations;
+    fin >> numRow1 >> numCol1;
+    fin.ignore();
 
-    Matrix m1(numRow, numCol);
+    Matrix m1(numRow1, numCol1);
 
-    SparseMatrix s1(numRow, numCol);
+    SparseMatrix s1(numRow1, numCol1);
     s1.MakeInternal();
 
-    while (getline(in, line))
+    while (getline(fin, line))
     {
         if (line.length() == 0)
         {
@@ -44,40 +41,68 @@ int main()
         s1.ChangeValue(row, col, value);
     }
 
+    cout << "First matrix:" << endl;
+    m1.Print();
+    cout << endl;
     s1.PrintInside();
 
-    cout << "\n--------------------------------\n";
-    in >> numRow >> numCol;
-    cout << numRow << " " << numCol << endl;
-    in.ignore();
+    if (operations == 'T')
+    {
+        // create a new sparse matrix and deadass just flip the numrows and numcols and transfer the values
+        // SparseMatrix sT(numCol1, numRow1);
+        // st = s1.transpose();
+        // st.PrintInside();
+        return 0;
+    }
 
-    Matrix m2(numRow, numCol);
-    SparseMatrix s2(numRow, numCol);
+    cout << "\n--------------------------------\n\n";
+
+    int numRow2, numCol2;
+    fin >> numRow2 >> numCol2;
+    fin.ignore();
+
+    Matrix m2(numRow2, numCol2);
+    SparseMatrix s2(numRow2, numCol2);
     s2.MakeInternal();
 
-    while (getline(in, line))
+    while (getline(fin, line))
     {
         if (line.length() == 0)
         {
             break;
         }
-        // cout << line << endl;
         stringstream ss(line);
         ss >> row >> col >> value;
         // cout << row << " " << col << " " << value << endl;
         m2.Insert(row, col, value);
         s2.ChangeValue(row, col, value);
     }
+
+    cout << "Second Matrix:" << endl;
+    m2.Print();
+    cout << endl;
     s2.PrintInside();
 
-    // cout << endl
-    //      << endl
-    //      << "First matrix:" << endl;
-    // m1.Print();
-    // cout << endl
-    //      << endl
-    //      << "Second Matrix:" << endl;
-    // m2.Print();
+    if (operations == '+')
+    {
+        if (numRow1 != numRow2 || numCol1 != numCol2)
+        {
+            cout << "Invalid Matrix Operation" << endl;
+            return 0;
+        }
+        // do the addition of both matrices
+    }
+    else if (operations == '*')
+    {
+        if (numCol1 != numRow2)
+        {
+            cout << "Invalid Matrix Operation" << endl;
+            return 0;
+        }
+        // do the multiplication of both matrices
+    }
+
+    // the end
 
     return 0;
 }
