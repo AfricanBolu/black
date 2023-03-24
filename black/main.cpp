@@ -102,6 +102,9 @@ int main()
         // do the multiplication of both matrices
     }
 
+    // we have to delete all the nodes with the values 0
+
+    cout << "\n--------------------------------\n\n";
     // the end
 
     return 0;
