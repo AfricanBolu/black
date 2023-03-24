@@ -85,6 +85,8 @@ int main()
 	Matrix m5 = m3.transpose();
 	cout << "Transpose:\n";
 	m5.Print();
+
+	//printing of frame
 	SparseMatrix t1(numRow, numCol);
 	t1.Frame();
 	t1.PrintFrame();
