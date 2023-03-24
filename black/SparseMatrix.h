@@ -25,5 +25,6 @@ public:
 	void InsertInternNode(int row, int col, int val);
 	void PrintInside();
 	InternalNode *GetInternalNode(int row, int col);
+	void ChangeValue(int row, int col, int val);
 	// please work
 };

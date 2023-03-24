@@ -27,6 +27,9 @@ int main()
 
     Matrix m1(numRow, numCol);
 
+    SparseMatrix s1(numRow, numCol);
+    s1.MakeInternal();
+
     while (getline(in, line))
     {
         if (line.length() == 0)
@@ -36,16 +39,21 @@ int main()
         // cout << line << endl;
         stringstream ss(line);
         ss >> row >> col >> value;
-        cout << row << " " << col << " " << value << endl;
+        // cout << row << " " << col << " " << value << endl;
         m1.Insert(row, col, value);
+        s1.ChangeValue(row, col, value);
     }
 
-    cout << "--------------------------------\n";
+    s1.PrintInside();
+
+    cout << "\n--------------------------------\n";
     in >> numRow >> numCol;
     cout << numRow << " " << numCol << endl;
     in.ignore();
 
     Matrix m2(numRow, numCol);
+    SparseMatrix s2(numRow, numCol);
+    s2.MakeInternal();
 
     while (getline(in, line))
     {
@@ -56,28 +64,20 @@ int main()
         // cout << line << endl;
         stringstream ss(line);
         ss >> row >> col >> value;
-        cout << row << " " << col << " " << value << endl;
+        // cout << row << " " << col << " " << value << endl;
         m2.Insert(row, col, value);
+        s2.ChangeValue(row, col, value);
     }
+    s2.PrintInside();
 
-    cout << endl
-         << endl
-         << "First matrix:" << endl;
-    m1.Print();
-    cout << endl
-         << endl
-         << "Second Matrix:" << endl;
-    m2.Print();
-
-    SparseMatrix sparse(numRow, numCol);
-    sparse.Frame();
-    cout << endl
-         << "Frame of sparse matrix:" << endl;
-    sparse.PrintFrame();
-
-    sparse.MakeInternal();
-
-    sparse.PrintInside();
+    // cout << endl
+    //      << endl
+    //      << "First matrix:" << endl;
+    // m1.Print();
+    // cout << endl
+    //      << endl
+    //      << "Second Matrix:" << endl;
+    // m2.Print();
 
     return 0;
 }

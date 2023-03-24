@@ -6,7 +6,7 @@ using namespace std;
 class HeaderNode
 {
 public:
-    int data = 0;
+    int data;
     HeaderNode *right;
     HeaderNode *down;
     HeaderNode()

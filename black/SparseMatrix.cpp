@@ -104,21 +104,20 @@ void SparseMatrix::MakeInternal()
 	// InternalNode *aboveNode;
 
 	// Create nodes for each element and link them
-	int count = 0;
+	// int count = 0;
 	for (int r = 0; r < numRows; r++)
 	{
 		for (int c = 0; c < numCols; c++)
 		{
-			cout << "--------------------------------" << endl;
-			cout << "r: " << r << " c: " << c << endl
-				 << endl;
-			InternalNode *newNode = new InternalNode(r, c, count);
-			newNode->PrintInfo();
-			cout << endl;
+			// cout << "--------------------------------" << endl;
+			// cout << "r: " << r << " c: " << c << endl << endl;
+			InternalNode *newNode = new InternalNode(r, c, 0);
+			// newNode->PrintInfo();
+			// cout << endl;
 			if (newNode->col == 0 && newNode->row == 0)
 			{
 				// this is the head of the internal list
-				cout << "inserting at head" << endl;
+				// cout << "inserting at head" << endl;
 				InternalHead = newNode;
 			}
 			else if (newNode->row == 0)
@@ -126,45 +125,45 @@ void SparseMatrix::MakeInternal()
 				// get the left node and insert/link
 				InternalNode *leftNode = GetInternalNode(newNode->row, newNode->col - 1);
 				// leftNode = GetInternalNode(newNode->col - 1, newNode->row);
-				cout << "left node created" << endl;
+				// cout << "left node created" << endl;
 
 				leftNode->right = newNode;
-				cout << "new node inserted" << endl;
+				// cout << "new node inserted" << endl;
 				newNode->left = leftNode;
-				cout << "left node linked" << endl;
-				leftNode->PrintInfo();
+				// cout << "left node linked" << endl;/
+				// leftNode->PrintInfo();
 				cout << endl;
 			}
 			else if (newNode->col == 0)
 			{
 				// get the above node and insert/link
 				InternalNode *aboveNode = GetInternalNode(newNode->row - 1, newNode->col);
-				cout << "Above" << endl;
+				// cout << "Above" << endl;
 				// aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
-				cout << "above node created" << endl;
+				// cout << "above node created" << endl;
 				aboveNode->down = newNode;
-				cout << "new node inserted";
+				// cout << "new node inserted";
 				newNode->up = aboveNode;
-				cout << "above node linked" << endl;
+				// cout << "above node linked" << endl;
 			}
 			else
 			{
 				// get the above node and left node and insert/link
 				InternalNode *aboveNode = GetInternalNode(newNode->row - 1, newNode->col);
 				InternalNode *leftNode = GetInternalNode(newNode->row, newNode->col - 1);
-				cout << "Above and left" << endl;
-				cout << "above node and left node created" << endl;
+				// cout << "Above and left" << endl;
+				// cout << "above node and left node created" << endl;
 				aboveNode->down = newNode;
-				cout << "above node inserted" << endl;
+				// cout << "above node inserted" << endl;
 				newNode->up = aboveNode;
-				cout << "above node linked" << endl;
-				leftNode->PrintInfo();
+				// cout << "above node linked" << endl;
+				// leftNode->PrintInfo();
 				leftNode->right = newNode;
-				cout << "left node inserted";
+				// cout << "left node inserted";
 				newNode->left = leftNode;
-				cout << "left node linked" << endl;
+				// cout << "left node linked" << endl;
 			}
-			count++;
+			// count++;
 		}
 	}
 }
@@ -220,6 +219,30 @@ void SparseMatrix::InsertInternNode(int row, int col, int val)
 	rowIndex->right = newNode;
 	colIndex->down = newNode;
 }
+void SparseMatrix::ChangeValue(int row, int col, int val)
+{
+	// this is the hard part
+	// InternalNode *newNode = new InternalNode(row, col, val);
+	InternalNode *traverser = InternalHead;
+
+	// if pos(0,0) then that's just the internal head
+	if (row == 0 && col == 0)
+	{
+		InternalHead->data = val;
+		return;
+	}
+
+	// traverse to the internal node that is to be changed
+	for (int r = 0; r < row; r++)
+	{
+		traverser = traverser->down;
+	}
+	for (int c = 0; c < col; c++)
+	{
+		traverser = traverser->right;
+	}
+	traverser->data = val;
+}
 
 void SparseMatrix::PrintInside()
 {
@@ -229,13 +252,17 @@ void SparseMatrix::PrintInside()
 	// lets just print the first row first
 	for (int r = 0; r < numRows; r++)
 	{
-		cout << "row: " << r << endl;
+		// cout << "row: " << r << endl;
 		traverser = GetInternalNode(r, 0);
 		while (traverser != nullptr)
 		{
-			cout << traverser->data << endl;
+			if (traverser->right == nullptr)
+			{
+				cout << traverser->data << endl;
+				break;
+			}
+			cout << traverser->data << ", ";
 			traverser = traverser->right;
 		}
-		cout << endl;
 	}
 }
