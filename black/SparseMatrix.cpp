@@ -1,5 +1,7 @@
 #include "SparseMatrix.h"
 #include "Node.h"
+#include <iostream>
+using namespace std;
 
 SparseMatrix::SparseMatrix()
 {
@@ -265,3 +267,11 @@ void SparseMatrix::PrintInside()
 		}
 	}
 }
+
+SparseMatrix SparseMatrix::operator+(const SparseMatrix& rhs) {
+
+}
+SparseMatrix SparseMatrix::operator*(const SparseMatrix& rhs) {
+
+}
+SparseMatrix transpose() {}

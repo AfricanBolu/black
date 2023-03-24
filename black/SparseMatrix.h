@@ -27,4 +27,8 @@ public:
 	InternalNode *GetInternalNode(int row, int col);
 	void ChangeValue(int row, int col, int val);
 	// please work
+
+	SparseMatrix operator+(const SparseMatrix& rhs);
+	SparseMatrix operator*(const SparseMatrix& rhs);
+	SparseMatrix transpose();
 };
