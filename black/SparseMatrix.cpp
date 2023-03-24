@@ -100,45 +100,67 @@ InternalNode *SparseMatrix::GetInternalNode(int row, int col)
 
 void SparseMatrix::MakeInternal()
 {
-	InternalNode *leftNode;
-	InternalNode *aboveNode;
+	// InternalNode *leftNode;
+	// InternalNode *aboveNode;
 
 	// Create nodes for each element and link them
 	for (int r = 0; r < numRows; r++)
 	{
 		for (int c = 0; c < numCols; c++)
 		{
-			cout << "Row " << r << endl;
-			cout << "Col " << c << endl;
+			cout << "r: " << r << " c: " << c << endl
+				 << endl;
 			InternalNode *newNode = new InternalNode(r, c, 14);
+			newNode->PrintInfo();
+			cout << endl;
 			if (newNode->col == 0 && newNode->row == 0)
 			{
 				// this is the head of the internal list
+				cout << "inserting at head" << endl;
 				InternalHead = newNode;
 			}
 			else if (newNode->row == 0)
 			{
 				// get the left node and insert/link
-				leftNode = GetInternalNode(newNode->col - 1, newNode->row);
+				InternalNode *leftNode = GetInternalNode(newNode->row, newNode->col - 1);
+				// leftNode = GetInternalNode(newNode->col - 1, newNode->row);
+				cout << "left node created" << endl;
+
 				leftNode->right = newNode;
+				cout << "new node inserted" << endl;
 				newNode->left = leftNode;
+				cout << "left node linked" << endl;
+				leftNode->PrintInfo();
+				cout << endl;
 			}
 			else if (newNode->col == 0)
 			{
 				// get the above node and insert/link
-				aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
+				InternalNode *aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
+				cout << "Above" << endl;
+				// aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
+				cout << "above node created" << endl;
 				aboveNode->down = newNode;
+				cout << "new node inserted";
 				newNode->up = aboveNode;
+				cout << "above node linked" << endl;
 			}
 			else
 			{
 				// get the above node and left node and insert/link
-				aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
-				aboveNode->down = newNode;
-				newNode->up = aboveNode;
-				leftNode = GetInternalNode(newNode->col - 1, newNode->row);
-				leftNode->right = newNode;
-				newNode->left = leftNode;
+				InternalNode *aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
+				InternalNode *leftNode = GetInternalNode(newNode->col - 1, newNode->row);
+				cout << "Above" << endl;
+				// aboveNode = GetInternalNode(newNode->col, newNode->row - 1);
+				cout << "above node created" << endl;
+				aboveNode->right = newNode;
+				cout << "new node inserted";
+				newNode->left = aboveNode;
+				cout << "above node linked" << endl;
+				leftNode->down = newNode;
+				cout << "new node inserted";
+				newNode->up = leftNode;
+				cout << "left node linked" << endl;
 			}
 		}
 	}

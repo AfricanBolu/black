@@ -49,6 +49,11 @@ public:
 
     void PrintInfo()
     {
+        cout << "node address: " << this << endl;
         cout << "row: " << row << " col: " << col << " data: " << data << endl;
+        cout << "left: " << left << endl;
+        cout << "right: " << right << endl;
+        cout << "up: " << up << endl;
+        cout << "down: " << down << endl;
     }
 };
