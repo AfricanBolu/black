@@ -26,8 +26,7 @@ int main()
 	in.ignore();
 
 	Matrix m1(numRow, numCol);
-	SparseMatrix t1(numRow, numCol);
-	t1.PrintFrame();
+	
 
 	while (getline(in, line))
 	{
@@ -72,6 +71,7 @@ int main()
 	m2.Print();
 	cout << endl
 		 << endl;
+	
 	Matrix m3 = m1 + m2;
 	cout << "Addition:\n";
 	m3.Print();
@@ -85,6 +85,11 @@ int main()
 	Matrix m5 = m3.transpose();
 	cout << "Transpose:\n";
 	m5.Print();
+	SparseMatrix t1(numRow, numCol);
+	t1.Frame();
+	t1.PrintFrame();
+	cout << "Frame of sparse matric\n";
+	t1.MakeInternal();
 
 	return 0;
 }
