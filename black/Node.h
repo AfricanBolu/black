@@ -13,6 +13,7 @@ public:
     {
         right = nullptr;
         down = nullptr;
+        data = 0;
     }
     // void setRightNode(Node* right) {
     // col = right;

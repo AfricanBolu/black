@@ -6,9 +6,13 @@ using namespace std;
 
 SparseMatrix::SparseMatrix()
 {
+	InternalHead = nullptr;
 	FrameHead = nullptr;
 	colTail = nullptr;
 	rowTail = nullptr;
+	numRows = 0;
+	numCols = 0;
+	value = 0;
 }
 
 SparseMatrix::SparseMatrix(int rows, int cols)
@@ -31,13 +35,7 @@ SparseMatrix::SparseMatrix(int rows, int cols)
 
 SparseMatrix::~SparseMatrix()
 {
-	// Node *currNode = head;
-	// while (currNode != nullptr)
-	// {
-	// 	Node *temp = currNode;
-	// 	currNode = currNode->;
-	// 	delete temp;
-	// }
+	
 }
 
 void SparseMatrix::Frame()
@@ -269,36 +267,45 @@ void SparseMatrix::PrintInside()
 	}
 }
 
-SparseMatrix SparseMatrix::operator+(const SparseMatrix& rhs) {
+SparseMatrix SparseMatrix::operator+(SparseMatrix& rhs) {
 	SparseMatrix result(numRows, numCols);
 	InternalNode *sum;
+	InternalNode* rhsCurr;
 	result.MakeInternal();
 
 	for (int r = 0; r < numRows; r++) {
 		for (int c = 0; c < numCols; c++) {
-			sum = GetInternalNode(r, c) + rhs.;
+			sum = GetInternalNode(r, c);
+			rhsCurr = rhs.GetInternalNode(r, c);
+			result.ChangeValue(r, c, sum->data + rhsCurr->data);
 		}
 	}
 
-	return;
+	return result;
 }
 
-//Matrix Matrix::operator+(const Matrix& rhs) {
-//	//ToDo: check size of the matrices	
-//	Matrix result(numRows, numCols);
-//	int sum;
-//	for (int row = 0; row < numRows; row++) {
-//		for (int col = 0; col < numCols; col++) {
-//			sum = values[row][col] + rhs.values[row][col];
-//			result.Insert(row, col, sum);
-//		}
-//	}
-//	return result;
-//}
+SparseMatrix SparseMatrix::operator*(SparseMatrix& rhs) {
+	SparseMatrix result(numRows, numCols);
+	result.MakeInternal();
+	
+	/*InternalNode* temp2;
+	InternalNode* temp3;*/
 
-//SparseMatrix SparseMatrix::operator*(const SparseMatrix& rhs) {
-//	return;
-//}
+	for (int r = 0; r < numRows; r++) {
+		for (int c = 0; c < numCols; c++) {
+			int temp2 = 0;
+			for (int t = 0; t < numCols; t++) {
+				InternalNode* multi = GetInternalNode(r, t);
+				InternalNode* temp = rhs.GetInternalNode(t, c);
+				temp2 += multi->data * temp->data;
+			}
+			result.ChangeValue(r, c, temp2);
+		}
+	}
+
+	return result;
+}
+
 
 
 SparseMatrix SparseMatrix::transpose() {

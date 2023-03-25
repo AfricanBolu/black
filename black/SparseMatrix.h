@@ -1,5 +1,6 @@
 #pragma once
 #include "Node.h"
+//#include "Node.h"
 
 class SparseMatrix
 {
@@ -28,7 +29,7 @@ public:
 	void ChangeValue(int row, int col, int val);
 	// please work
 
-	SparseMatrix operator+(const SparseMatrix& rhs);
-	SparseMatrix operator*(const SparseMatrix& rhs);
+	SparseMatrix operator+(SparseMatrix& rhs);
+	SparseMatrix operator*(SparseMatrix& rhs);
 	SparseMatrix transpose();
 };

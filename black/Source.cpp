@@ -11,7 +11,7 @@ using namespace std;
 int main()
 { // int argc, char* argv[]) {
     // ArgumentManager am(argc, argv);
-    ifstream fin("input3.txt");
+    ifstream fin("input2.txt");
     ofstream out("output.txt");
 
     char operations;
@@ -23,7 +23,7 @@ int main()
     fin.ignore();
 
     Matrix m1(numRow1, numCol1);
-
+    //Matrix t0(numRow1, numCol1);
     SparseMatrix s1(numRow1, numCol1);
     s1.MakeInternal();
 
@@ -62,9 +62,13 @@ int main()
     fin >> numRow2 >> numCol2;
     fin.ignore();
 
+
+   
+    //Matrix t6(numRow2, numCol2);
     Matrix m2(numRow2, numCol2);
     SparseMatrix s2(numRow2, numCol2);
     s2.MakeInternal();
+    
 
     while (getline(fin, line))
     {
@@ -92,6 +96,14 @@ int main()
             return 0;
         }
         // do the addition of both matrices
+        cout << "\noperation +\n\n";
+        s1.PrintInside();
+        cout << "\n+\n\n";
+        s2.PrintInside();
+        cout << "\n=\n\n";
+        SparseMatrix sPlus = s1 + s2;
+
+        sPlus.PrintInside();
     }
     else if (operations == '*')
     {
@@ -101,12 +113,31 @@ int main()
             return 0;
         }
         // do the multiplication of both matrices
+
+        cout << "\nmultiplication *\n\n";
+        s1.PrintInside();
+        cout << "\n*\n\n";
+        s2.PrintInside();
+        cout << "\n=\n\n";
+        SparseMatrix test = s1 * s2;
+        
+        test.PrintInside();
+        cout << "\nright output\n\n";
+        Matrix ans = m1 * m2;
+        ans.Print();
+
     }
 
     // we have to delete all the nodes with the values 0
 
     cout << "\n--------------------------------\n\n";
     // the end
+
+    SparseMatrix m0(numRow1, numCol1);
+    m0.Frame();
+    m0.PrintFrame();
+    /*SparseMatrix p()
+    m0.PrintInside();*/
 
     return 0;
 }
