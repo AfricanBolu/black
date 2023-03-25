@@ -1,6 +1,6 @@
 #pragma once
 #include "Node.h"
-//#include "Node.h"
+#include <ostream>
 
 class SparseMatrix
 {
@@ -22,9 +22,9 @@ public:
 	~SparseMatrix();
 	void Frame();
 	void MakeInternal();
-	void PrintFrame();
+	void PrintFrame(ostream& out);
 	void InsertInternNode(int row, int col, int val);
-	void PrintInside();
+	void PrintInside(ostream& out);
 	InternalNode *GetInternalNode(int row, int col);
 	void ChangeValue(int row, int col, int val);
 	// please work

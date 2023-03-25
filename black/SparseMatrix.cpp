@@ -168,14 +168,14 @@ void SparseMatrix::MakeInternal()
 	}
 }
 
-void SparseMatrix::PrintFrame()
+void SparseMatrix::PrintFrame(ostream& out)
 {
 	// this prints out the nodes to the right aka the col nodes
 	HeaderNode *traverser = FrameHead->right;
 	cout << "column nodes:" << endl;
 	while (traverser != nullptr)
 	{
-		cout << traverser->data << endl;
+		out << traverser->data << endl;
 		traverser = traverser->right;
 	}
 
@@ -184,7 +184,7 @@ void SparseMatrix::PrintFrame()
 	traverser = FrameHead->down;
 	while (traverser != nullptr)
 	{
-		cout << traverser->data << endl;
+		out << traverser->data << endl;
 		traverser = traverser->down;
 	}
 }
@@ -244,7 +244,7 @@ void SparseMatrix::ChangeValue(int row, int col, int val)
 	traverser->data = val;
 }
 
-void SparseMatrix::PrintInside()
+void SparseMatrix::PrintInside(ostream& out)
 {
 	// TODO: print the inside nodes
 	InternalNode *traverser = new InternalNode(0, 0, 0);
@@ -261,7 +261,7 @@ void SparseMatrix::PrintInside()
 				cout << traverser->data << endl;
 				break;
 			}
-			cout << traverser->data << ", ";
+			out << traverser->data << ", ";
 			traverser = traverser->right;
 		}
 	}
