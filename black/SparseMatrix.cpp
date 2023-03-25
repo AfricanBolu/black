@@ -269,12 +269,36 @@ void SparseMatrix::PrintInside()
 	}
 }
 
-//SparseMatrix SparseMatrix::operator+(const SparseMatrix& rhs) {
-//	return;
+SparseMatrix SparseMatrix::operator+(const SparseMatrix& rhs) {
+	SparseMatrix result(numRows, numCols);
+	InternalNode *sum;
+	result.MakeInternal();
+
+	for (int r = 0; r < numRows; r++) {
+		for (int c = 0; c < numCols; c++) {
+			sum = GetInternalNode(r, c) + rhs.
+		}
+	}
+
+	return;
+}
+
+//Matrix Matrix::operator+(const Matrix& rhs) {
+//	//ToDo: check size of the matrices	
+//	Matrix result(numRows, numCols);
+//	int sum;
+//	for (int row = 0; row < numRows; row++) {
+//		for (int col = 0; col < numCols; col++) {
+//			sum = values[row][col] + rhs.values[row][col];
+//			result.Insert(row, col, sum);
+//		}
+//	}
+//	return result;
 //}
-//SparseMatrix SparseMatrix::operator*(const SparseMatrix& rhs) {
-//	return;
-//}
+
+SparseMatrix SparseMatrix::operator*(const SparseMatrix& rhs) {
+	return;
+}
 SparseMatrix SparseMatrix::transpose() {
 	SparseMatrix result(numCols, numRows);
 	InternalNode* ogNode;
@@ -290,14 +314,3 @@ SparseMatrix SparseMatrix::transpose() {
 	return result;
 }
 
-//Matrix Matrix::transpose() {
-//	Matrix result(numCols, numRows);
-//	int temp;
-//	for (int row = 0; row < numCols; row++) {
-//		for (int col = 0; col < numRows; col++) {
-//			temp = values[col][row];
-//			result.Insert(col, row, temp);
-//		}
-//	}
-//	return result;
-//}
