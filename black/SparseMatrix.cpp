@@ -276,7 +276,7 @@ SparseMatrix SparseMatrix::operator+(const SparseMatrix& rhs) {
 
 	for (int r = 0; r < numRows; r++) {
 		for (int c = 0; c < numCols; c++) {
-			sum = GetInternalNode(r, c) + rhs.
+			sum = GetInternalNode(r, c) + rhs.;
 		}
 	}
 
@@ -296,9 +296,11 @@ SparseMatrix SparseMatrix::operator+(const SparseMatrix& rhs) {
 //	return result;
 //}
 
-SparseMatrix SparseMatrix::operator*(const SparseMatrix& rhs) {
-	return;
-}
+//SparseMatrix SparseMatrix::operator*(const SparseMatrix& rhs) {
+//	return;
+//}
+
+
 SparseMatrix SparseMatrix::transpose() {
 	SparseMatrix result(numCols, numRows);
 	InternalNode* ogNode;
