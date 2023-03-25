@@ -11,7 +11,7 @@ using namespace std;
 int main()
 { // int argc, char* argv[]) {
     // ArgumentManager am(argc, argv);
-    ifstream fin("input3.txt");
+    ifstream fin("input2.txt");
     ofstream out("output.txt");
 
     char operations;
@@ -91,7 +91,14 @@ int main()
             cout << "Invalid Matrix Operation" << endl;
             return 0;
         }
-        // do the addition of both matrices
+        cout << "\noperation +\n\n";
+        s1.PrintInside();
+        cout << "\n+\n\n";
+        s2.PrintInside();
+        cout << "\n=\n\n";
+        SparseMatrix sPlus = s1 + s2;
+
+        sPlus.PrintInside();
     }
     else if (operations == '*')
     {
