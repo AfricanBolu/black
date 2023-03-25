@@ -1,6 +1,7 @@
 #include "SparseMatrix.h"
 #include "Node.h"
 #include <iostream>
+
 using namespace std;
 
 SparseMatrix::SparseMatrix()
@@ -268,10 +269,35 @@ void SparseMatrix::PrintInside()
 	}
 }
 
-SparseMatrix SparseMatrix::operator+(const SparseMatrix& rhs) {
-
+//SparseMatrix SparseMatrix::operator+(const SparseMatrix& rhs) {
+//	return;
+//}
+//SparseMatrix SparseMatrix::operator*(const SparseMatrix& rhs) {
+//	return;
+//}
+SparseMatrix SparseMatrix::transpose() {
+	SparseMatrix result(numCols, numRows);
+	InternalNode* ogNode;
+	result.MakeInternal();
+	for (int r = 0; r < numCols; r++) {
+		for (int c = 0; c < numRows; c++) {
+			ogNode = GetInternalNode(r, c);
+			if (ogNode != nullptr) {
+				result.ChangeValue(c, r, ogNode->data);
+			}
+		}
+	}
+	return result;
 }
-SparseMatrix SparseMatrix::operator*(const SparseMatrix& rhs) {
 
-}
-SparseMatrix transpose() {}
+//Matrix Matrix::transpose() {
+//	Matrix result(numCols, numRows);
+//	int temp;
+//	for (int row = 0; row < numCols; row++) {
+//		for (int col = 0; col < numRows; col++) {
+//			temp = values[col][row];
+//			result.Insert(col, row, temp);
+//		}
+//	}
+//	return result;
+//}
