@@ -11,7 +11,7 @@ using namespace std;
 int main()
 { // int argc, char* argv[]) {
     // ArgumentManager am(argc, argv);
-    ifstream fin("input1.txt");
+    ifstream fin("input3.txt");
     ofstream out("output.txt");
 
     char operations;
@@ -48,10 +48,11 @@ int main()
 
     if (operations == 'T')
     {
+        cout << "\noperation t\n"
+             << endl;
         // create a new sparse matrix and deadass just flip the numrows and numcols and transfer the values
-        // SparseMatrix sT(numCol1, numRow1);
-        // st = s1.transpose();
-        // st.PrintInside();
+        SparseMatrix sT = s1.transpose();
+        sT.PrintInside();
         return 0;
     }
 
