@@ -10,11 +10,11 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     ArgumentManager am(argc, argv);
-    /*ifstream fin("input2.txt");
-    ofstream out("output.txt");*/
+    ifstream fin("input2.txt");
+    ofstream out("output.txt");
 
-    ifstream fin(am.get("input"));
-    ofstream out(am.get("output"));
+    /*ifstream fin(am.get("input"));
+    ofstream out(am.get("output"));*/
 
     char operations;
     int numRow1, numCol1, row, col, value;
